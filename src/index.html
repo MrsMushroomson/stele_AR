@@ -18,11 +18,8 @@
     renderer="colorManagement:true" xrweb="disableWorldTracking: true">
 
     <a-assets>
-      <!-- Credit to Poly by Google for the model: https://poly.google.com/view/dA5osnS0Rzj -->
-      <a-asset-item id="jelly-glb" src="assets/jellyfish-model.glb"></a-asset-item>
-      <img id="jelly-thumb" src="assets/video-target.jpg">
-      <video id="jelly-video" autoplay muted crossorigin="anonymous" loop="true" src="assets/jellyfish-video.mp4">
-      </video>
+      <!-- Outline texture for the target -->
+      <img id="outline" src="assets/oultine_stele_latoA.png" crossorigin="anonymous">
     </a-assets>
 
     <a-camera position="0 4 10" raycaster="objects: .cantap" cursor="fuse: false; rayOrigin: mouse;">
@@ -32,16 +29,12 @@
 
     <a-light type="ambient" intensity="1"></a-light>
 
-    <!-- Note: "name:" must be set to the name of the image target -->
-    <xrextras-named-image-target name="video-target">
-      <a-entity xrextras-play-video="video: #jelly-video; thumb: #jelly-thumb; canstop: true"
-        geometry="primitive: plane; height: 1; width: 0.79;"></a-entity>
-    </xrextras-named-image-target>
-
-    <!-- Note: "name:" must be set to the name of the image target  -->
-    <xrextras-named-image-target name="model-target">
-      <!-- Add a child entity that can be rotated independently of the image target. -->
-      <a-entity xrextras-one-finger-rotate gltf-model="#jelly-glb"></a-entity>
+    <!-- Note: "name" must match the image target name in stele_latoA.json -->
+    <xrextras-named-image-target name="stele_latoA">
+      <a-entity geometry="primitive: plane; height: 0.8; width: 0.6"
+        material="src: #outline; transparent: true; opacity: 1"
+        position="-0.01 0.20 0.01"
+        scale="0.9 0.7  0.9"></a-entity>
     </xrextras-named-image-target>
 
   </a-scene>
